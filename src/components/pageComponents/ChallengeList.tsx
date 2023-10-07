@@ -1,4 +1,3 @@
-import React from "react";
 import { Post } from "../../types/post";
 import { Text } from "@radix-ui/themes";
 import styled, { css } from "styled-components";
@@ -51,14 +50,15 @@ const ChallengeList = ({ postData }: Props) => {
   return (
     <>
       {postData?.slice(0, 5)?.map((each, key) => (
-        <ListStyled
-          active={key === 0}
-          key={key}
-          className="bg-gradient-to-r from-primary to-green px-[20px] py-[10px] flex items-center justify-start gap-3 shadow-md"
-        >
-          <Text className="text-[40px] text-primary">{numbers[key]}</Text>
-          <Text className="text-[18px]">{each.title}</Text>
-        </ListStyled>
+        <Fade key={key} cascade damping={0.2}>
+          <ListStyled
+            active={key === 0}
+            className="bg-gradient-to-r from-primary to-green px-[20px] py-[10px] flex items-center justify-start gap-3 shadow-md"
+          >
+            <Text className="text-[40px] text-primary">{numbers[key]}</Text>
+            <Text className="text-[18px]">{each.title}</Text>
+          </ListStyled>
+        </Fade>
       ))}
     </>
   );

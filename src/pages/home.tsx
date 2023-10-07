@@ -51,7 +51,7 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-12 pb-[80px]">
+      <div className="grid grid-cols-12 pb-[80px] overflow-hidden">
         <div className="col-start-2 col-span-10">
           <div className="grid grid-cols-12">
             <Fade
@@ -59,10 +59,12 @@ const Landing = () => {
               className="lg:col-span-6 col-span-12 flex items-center"
             >
               <div className="space-y-[20px]">
-                <Title>
-                  <span>About</span>
-                  <span className="text-primary">TRIPPRO</span>
-                </Title>
+                <Fade>
+                  <Title>
+                    <span>About</span>
+                    <span className="text-primary">TRIPPRO</span>
+                  </Title>
+                </Fade>
                 <Text as="p">
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                   diam nonumy eirmod tempor invidunt ut labore et dolore magna
@@ -72,7 +74,7 @@ const Landing = () => {
                   ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
                   nonumy
                 </Text>
-                <Button>TOUR TO WEBSITE</Button>
+                <Button value="TOUR TO WEBSITE">TOUR TO WEBSITE</Button>
               </div>
             </Fade>
             <div className="col-span-6">
@@ -95,7 +97,7 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-12 pb-[80px]">
+      <div className="grid grid-cols-12 pb-[80px] overflow-hidden">
         <div className="col-start-2 col-span-10">
           <div className="grid grid-cols-12 lg:gap-[50px]">
             <div className="lg:col-span-6 col-span-12">
@@ -115,46 +117,55 @@ const Landing = () => {
             </div>
             <div className="lg:col-span-6 col-span-12">
               <div className="space-y-[20px]">
-                <Title border={false}>
-                  <span>OUR</span>
-                  <span className="text-primary">CHALLENGES</span>
+                <Title
+                  border={false}
+                  className="flex justify-start items-center"
+                >
+                  <Fade>OUR</Fade>
+                  <Fade direction="right" className="text-primary">
+                    CHALLENGES
+                  </Fade>
                 </Title>
                 <div className="space-y-[20px]">
                   <ChallengeList postData={data} />
                 </div>
-                <Button>View More</Button>
+                <Button value="View More">View More</Button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-12 pb-[80px]">
+      <div className="grid grid-cols-12 pb-[80px] overflow-hidden">
         <div
           className={cn("col-span-4", switchToggle ? "flex items-center" : "")}
         >
-          <div className="-ml-[30px] flex justify-start items-start gap-5">
-            <Image
-              src={switchToggle ? Images.mobileApp : Images.webApp}
-              className={cn("", switchToggle && "w-auto h-[375px]")}
-              width={270}
-              height={360}
-              alt="web app"
-            />
-            {switchToggle && (
+          <Fade direction="up">
+            <div className="-ml-[30px] flex justify-start items-start gap-5">
               <Image
-                src={Images.mobileApp}
-                className="w-auto h-[375px]"
+                src={switchToggle ? Images.mobileApp : Images.webApp}
+                className={cn("", switchToggle && "w-auto h-[375px]")}
                 width={270}
                 height={360}
                 alt="web app"
               />
-            )}
-          </div>
+
+              {switchToggle && (
+                <Image
+                  src={Images.mobileApp}
+                  className="w-auto h-[375px]"
+                  width={270}
+                  height={360}
+                  alt="web app"
+                />
+              )}
+            </div>
+          </Fade>
         </div>
         <div className="col-span-8">
           <div className="relative text-white bg-gradient-to-r from-primary to-green pt-[60px] pl-[20em] pr-[10em]">
-            <div
+            <Fade
+              direction="left"
               className={cn(
                 "absolute",
                 switchToggle
@@ -191,7 +202,7 @@ const Landing = () => {
                   />
                 </div>
               </div>
-            </div>
+            </Fade>
             <Text as="p" className="color-white text-[36px] pb-[40px]">
               Their Old Website & Problems
             </Text>

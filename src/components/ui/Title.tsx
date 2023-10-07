@@ -1,9 +1,9 @@
 import { Text } from "@radix-ui/themes";
 import React from "react";
 import styled, { css } from "styled-components";
+import { cn } from "../../shared/cn";
 
 const TextStyled = styled(Text)<{ border?: boolean }>`
-  display: block;
   padding-bottom: 15px;
   margin-bottom: 15px;
   position: relative;
@@ -25,19 +25,22 @@ const TextStyled = styled(Text)<{ border?: boolean }>`
 const Title: React.FC<{
   children: React.ReactNode;
   border?: boolean;
+  className?: string;
 }> = ({
   children,
-  border = true
+  border = true,
+  className
 }: {
   children: React.ReactNode;
   border?: boolean;
+  className?: string;
 }) => {
   return (
     <TextStyled
       border={border}
       weight="bold"
       size="8"
-      className="space-x-[10px] uppercase"
+      className={cn("space-x-[10px] uppercase", className)}
     >
       {children}
     </TextStyled>
