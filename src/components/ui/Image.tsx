@@ -5,6 +5,12 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { PiArrowRightThin, PiCaretDownLight } from "react-icons/pi";
 import { AiOutlineDesktop } from "react-icons/ai";
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
+import {
+  GrFacebookOption,
+  GrInstagram,
+  GrLinkedinOption,
+  GrTwitter
+} from "react-icons/gr";
 import { cn } from "../../shared/cn";
 
 interface Icon {
@@ -53,7 +59,11 @@ export const Icons = {
   downCaret: PiCaretDownLight,
   computer: AiOutlineDesktop,
   mobile: HiOutlineDevicePhoneMobile,
-  rightArrow: PiArrowRightThin
+  rightArrow: PiArrowRightThin,
+  facebook: GrFacebookOption,
+  twitter: GrTwitter,
+  instagram: GrInstagram,
+  linkedin: GrLinkedinOption
 };
 
 export const Image: React.FC<Image> = ({

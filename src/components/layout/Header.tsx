@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { HEADER_MENUS } from "../shared/data";
+import { HEADER_MENUS } from "../../shared/data";
 import { Dialog } from "@headlessui/react";
-import { Icons } from "./ui/Image";
+import { Icons } from "../ui/Image";
 import { Button } from "@radix-ui/themes";
-import Dropdown from "./ui/Dropdown";
+import Dropdown from "../ui/Dropdown";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import { WINDOW_WIDTH } from "../../shared/enum";
+import HamburgerDrawer from "./Drawer";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { windowWidth } = useWindowSize();
 
-  return (
+  return windowWidth > WINDOW_WIDTH.MD ? (
     <>
       <div className="grid grid-cols-12 bg-gray">
         <div className="col-start-2 col-span-10">
@@ -16,11 +20,7 @@ const Header = () => {
             <div className="flex lg:flex-1">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                  alt=""
-                />
+                <img className="h-8 w-auto" src="/vite.svg" alt="" />
               </a>
             </div>
             <div className="flex justify-start gap-5">
@@ -48,8 +48,8 @@ const Header = () => {
 
       <header className="grid grid-cols-12">
         <div className="col-start-2 col-span-10">
-          <nav className="flex justify-between">
-            <div className="flex lg:flex-1">
+          <nav className="flex justify-end">
+            {/* <div className="flex lg:flex-1">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
                 <img
@@ -58,7 +58,7 @@ const Header = () => {
                   alt=""
                 />
               </a>
-            </div>
+            </div> */}
             <div className="flex lg:hidden">
               <button
                 type="button"
@@ -81,14 +81,6 @@ const Header = () => {
               ))}
               <Icons.search className="w-[20px] h-[20px]" />
             </div>
-            {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <a
-                href="#"
-                className="text-sm font-semibold leading-6 text-black"
-              >
-                Log in <span aria-hidden="true">&rarr;</span>
-              </a>
-            </div> */}
           </nav>
           <Dialog
             as="div"
@@ -144,6 +136,21 @@ const Header = () => {
         </div>
       </header>
     </>
+  ) : (
+    <HamburgerDrawer>
+      <div className="flex flex-col p-[30px] space-y-[24px]">
+        {HEADER_MENUS.map((item, key) => (
+          <a
+            key={key}
+            href={item.href}
+            className="text-sm font-semibold leading-6 text-black"
+          >
+            {item.name}
+          </a>
+        ))}
+        <Icons.search className="w-[20px] h-[20px]" />
+      </div>
+    </HamburgerDrawer>
   );
 };
 
