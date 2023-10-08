@@ -220,7 +220,7 @@ const Landing = () => {
               Their Old Website & Problems
             </Text>
             <ul className="relative space-y-[10px] pb-[60px] max-md:px-[16px]">
-              {[0, 1, 2].map((each, key) => (
+              {[0, 1, 2].map((_, key) => (
                 <li key={key} className="flex justify-start items-start gap-3">
                   <Icons.rightArrow className="w-[40px] h-[25px]" />
                   <Text>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { HEADER_MENUS } from "../../shared/data";
 import { Dialog } from "@headlessui/react";
 import { Icons } from "../ui/Image";

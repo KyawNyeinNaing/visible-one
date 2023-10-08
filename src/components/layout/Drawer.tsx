@@ -1,26 +1,26 @@
-import React, { ReactNode, useEffect, useRef } from "react";
-
-import "../../styles/drawer.css";
+import { ReactNode, useEffect, useRef, KeyboardEvent } from "react";
 import { cn } from "../../shared/cn";
+import "../../styles/drawer.css";
 
-export const HamburgerDrawer = ({
-  children,
-  className
-}: {
+interface HamburgerDrawerProps {
   children: ReactNode;
   className?: string;
-}) => {
+}
+
+const HamburgerDrawer = ({ children, className }: HamburgerDrawerProps) => {
   const checkbox = useRef<HTMLInputElement | null>(null);
 
-  const handleEscKey = (event: KeyboardEvent) => {
+  const handleEscKey = (event: Event) => {
+    const keyboardEvent = event as unknown as KeyboardEvent<HTMLElement>;
+    console.log(keyboardEvent);
     // Closes the navigation drawer by pressing Esc key.
-    if ("Escape" === event.key && checkbox.current) {
+    if (keyboardEvent.key === "Escape" && checkbox.current) {
       checkbox.current.checked = false;
     }
   };
 
   const handleKeyup = (event: KeyboardEvent) => {
-    if ("Enter" === event.key && checkbox.current) {
+    if (event.key === "Enter" && checkbox.current) {
       checkbox.current.checked = !checkbox.current.checked;
     }
   };
@@ -49,8 +49,8 @@ export const HamburgerDrawer = ({
           className="z-[1]"
           htmlFor="HamburgerDrawer-toggle"
           tabIndex={-1}
-          aria-hidden="true"
-          hidden
+          aria-hidden={true}
+          hidden={true}
         >
           Close menu
         </label>
