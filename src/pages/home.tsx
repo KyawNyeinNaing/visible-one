@@ -65,11 +65,18 @@ const Landing = () => {
               direction="left"
               className="lg:col-span-6 col-span-12 flex items-center"
             >
-              <div className="space-y-[20px]">
+              <div className="space-y-[35px]">
                 <Fade>
                   <Title>
                     <span>About</span>
-                    <span className="text-primary">TRIPPRO</span>
+                    <Fade
+                      className="text-primary"
+                      delay={1}
+                      cascade
+                      damping={1e-1}
+                    >
+                      TRIPPRO
+                    </Fade>
                   </Title>
                 </Fade>
                 <Text as="p">
@@ -129,7 +136,12 @@ const Landing = () => {
                   className="flex justify-start items-center"
                 >
                   <Fade>OUR</Fade>
-                  <Fade direction="right" className="text-primary">
+                  <Fade
+                    delay={1}
+                    cascade
+                    damping={1e-1}
+                    className="text-primary"
+                  >
                     CHALLENGES
                   </Fade>
                 </Title>
